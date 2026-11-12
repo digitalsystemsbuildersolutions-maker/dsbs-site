@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DSBS — Digital System Build Solutions</title>
+<meta name="description" content="DSBS conçoit des systèmes numériques simples pour les commerces et PME : présence en ligne, gestion des commandes, automatisation et IA. Diagnostic gratuit sur WhatsApp.">
+<meta property="og:title" content="DSBS — Votre business est visible. Mais est-il organisé pour vendre ?">
+<meta property="og:description" content="Présence en ligne, organisation des commandes, automatisation. Diagnostic gratuit pour les commerces et PME.">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --bg:#0a0f0d; --surface:#111917; --surface2:#16211e; --line:#22302c;
+    --text:#eef4f1; --muted:#9db0aa; --accent:#19c37d; --accent-dark:#0e8f5b;
+    --radius:18px; --max:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+  a{color:inherit;text-decoration:none}
+
+  header{position:sticky;top:0;z-index:20;background:rgba(10,15,13,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
+  .brand span.dot{width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    background:var(--accent);color:#04140d;font-weight:700;border-radius:999px;
+    padding:14px 22px;font-size:15px;transition:.18s ease;border:1px solid transparent;
+  }
+  .btn:hover{background:#22e08f;transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--text);border-color:var(--line)}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .btn.small{padding:10px 18px;font-size:14px}
+
+  section{padding:64px 0}
+  h1{font-size:clamp(28px,6vw,46px);line-height:1.15;letter-spacing:-.5px}
+  h2{font-size:clamp(22px,4.2vw,32px);line-height:1.2;letter-spacing:-.3px;margin-bottom:12px}
+  h3{font-size:18px;margin-bottom:8px}
+  p.lead{color:var(--muted);font-size:clamp(15px,2.6vw,18px);max-width:640px}
+  .eyebrow{color:var(--accent);font-weight:700;font-size:13px;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:14px}
+
+  .hero{padding:72px 0 56px;background:
+    radial-gradient(900px 420px at 80% -10%, rgba(25,195,125,.16), transparent 60%),
+    radial-gradient(700px 380px at -10% 30%, rgba(25,195,125,.08), transparent 55%);}
+  .hero .lead{margin:18px 0 28px}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px}
+
+  .proof{display:grid;grid-template-columns:1fr;gap:10px;margin-top:34px}
+  .chip{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:14px}
+  .chip i{width:18px;height:18px;border-radius:50%;background:rgba(25,195,125,.15);color:var(--accent);
+    display:inline-flex;align-items:center;justify-content:center;font-style:normal;font-size:12px;flex:0 0 18px}
+
+  .grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:28px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .card p{color:var(--muted);font-size:15px}
+  .card .num{color:var(--accent);font-weight:800;font-size:13px;letter-spacing:1.6px;margin-bottom:10px;display:block}
+
+  .steps{counter-reset:s;display:grid;grid-template-columns:1fr;gap:14px;margin-top:26px}
+  .step{display:flex;gap:14px;background:var(--surface2);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .step .n{flex:0 0 34px;height:34px;border-radius:50%;background:var(--accent);color:#04140d;font-weight:800;
+    display:flex;align-items:center;justify-content:center}
+  .step p{color:var(--muted);font-size:14px}
+
+  .audience{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .audience span{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:9px 16px;font-size:14px;color:var(--muted)}
+
+  .contact{background:linear-gradient(180deg,rgba(25,195,125,.10),transparent 70%);border-top:1px solid var(--line)}
+  .contact-box{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px}
+  .contact-links{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+  .contact-links a{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:15px;word-break:break-word}
+  .contact-links a:hover{color:var(--accent)}
+
+  footer{border-top:1px solid var(--line);padding:26px 0;color:#7d8f89;font-size:13px}
+  .foot{display:flex;flex-direction:column;gap:6px}
+
+  @media(min-width:720px){
+    .grid{grid-template-columns:repeat(3,1fr)}
+    .steps{grid-template-columns:repeat(2,1fr)}
+    .proof{grid-template-columns:repeat(3,auto);justify-content:start;gap:26px}
+    .contact-box{display:flex;justify-content:space-between;align-items:center;gap:30px}
+    .contact-links{margin-top:0}
+    .foot{flex-direction:row;justify-content:space-between}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand"><span class="dot"></span> DSBS</div>
+    <a class="btn small" href="https://wa.me/22664555112?text=DIAGNOSTIC">Diagnostic gratuit</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Digital System Build Solutions</div>
+      <h1>Votre business est visible.<br>Mais est-il organisé pour vendre ?</h1>
+      <p class="lead">DSBS conçoit des systèmes numériques simples pour les commerces et PME :
+        présence en ligne, commandes centralisées, relances automatiques et IA utile.
+        Pas de jargon, des résultats mesurables.</p>
+      <div class="cta-row">
+        <a class="btn" href="https://wa.me/22664555112?text=DIAGNOSTIC">Obtenir mon diagnostic gratuit</a>
+        <a class="btn ghost" href="#services">Voir ce qu'on construit</a>
+      </div>
+      <div class="proof">
+        <div class="chip"><i>✓</i> Pensé mobile-first</div>
+        <div class="chip"><i>✓</i> Adapté à l'Afrique de l'Ouest</div>
+        <div class="chip"><i>✓</i> WhatsApp au centre du système</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="eyebrow">Nos trois piliers</div>
+      <h2>Visibilité. Organisation. Automatisation.</h2>
+      <p class="lead">Trois problèmes qui coûtent des ventes chaque semaine, trois réponses concrètes.</p>
+
+      <div class="grid">
+        <div class="card">
+          <span class="num">01</span>
+          <h3>Présence en ligne</h3>
+          <p>Site vitrine rapide, fiche Google à jour, réseaux coordonnés. Un prospect vous trouve et comprend votre offre en moins de trente secondes.</p>
+        </div>
+        <div class="card">
+          <span class="num">02</span>
+          <h3>Organisation</h3>
+          <p>Commandes, clients et relances centralisés. Fini les messages perdus, les doublons et les ventes oubliées dans une conversation.</p>
+        </div>
+        <div class="card">
+          <span class="num">03</span>
+          <h3>Automatisation et IA</h3>
+          <p>Réponses automatiques, relances programmées, tableaux de bord clairs. Le système travaille pendant que vous servez vos clients.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--surface2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="eyebrow">Méthode</div>
+      <h2>Comment ça se passe</h2>
+      <p class="lead">Quatre étapes, sans engagement de départ.</p>
+      <div class="steps">
+        <div class="step"><div class="n">1</div><div><h3>Diagnostic gratuit</h3><p>On regarde votre présence en ligne, votre flux de commandes et vos points de perte.</p></div></div>
+        <div class="step"><div class="n">2</div><div><h3>Plan d'action</h3><p>Priorités classées par impact et par budget, avec un délai réaliste.</p></div></div>
+        <div class="step"><div class="n">3</div><div><h3>Mise en place</h3><p>Site, organisation, automatisations. Testé, vérifié, documenté.</p></div></div>
+        <div class="step"><div class="n">4</div><div><h3>Suivi</h3><p>Mesures, ajustements et formation de votre équipe.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Pour qui</div>
+      <h2>Conçu pour les commerces qui vendent déjà</h2>
+      <p class="lead">Vous avez des clients, mais votre organisation ne suit pas. C'est exactement notre terrain.</p>
+      <div class="audience">
+        <span>Commerces</span>
+        <span>Pharmacies</span>
+        <span>Restaurants</span>
+        <span>Prestataires de services</span>
+        <span>E-commerçants</span>
+        <span>Entrepreneurs</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-box">
+        <div>
+          <div class="eyebrow">Parlons de votre système</div>
+          <h2>Écrivez DIAGNOSTIC</h2>
+          <p class="lead">Réponse sous 24 h. Le diagnostic est gratuit et sans engagement.</p>
+        </div>
+        <div class="contact-links">
+          <a href="https://wa.me/22664555112?text=DIAGNOSTIC">WhatsApp : +226 64 55 51 12</a>
+          <a href="mailto:digitalsystembuildersolutions@gmail.com">digitalsystembuildersolutions@gmail.com</a>
+          <a href="https://www.instagram.com/abdoul_wahab_officiel">Instagram</a>
+          <a href="https://www.youtube.com/@digitalsystemsbuildersolutions">YouTube</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>© 2026 Digital System Build Solutions — Ouagadougou, Burkina Faso</div>
+    <div>Visibilité · Organisation · Automatisation</div>
+  </div>
+</footer>
+
+</body>
+</html>
